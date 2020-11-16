@@ -6,7 +6,7 @@ import { request } from '@esri/arcgis-rest-request';
 import * as environmentalZones from '../assets/data/milieuzones.json';
 import { replaceMultipleOccurences } from '../utils/helpers';
 
-const zones = environmentalZones;
+const zones = environmentalZones.default;
 
 // Found out how to get geojson via: https://gis.stackexchange.com/questions/206313/accessing-geojson-from-arcgis-online-rest-api
 const uri = 'https://services.arcgis.com/kE0BiyvJHb5SwQv7/arcgis/rest/services/Milieuzones_NL/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true';

@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import dotenv from 'dot-env';
-dotenv.config();
+import dotEnv from 'dot-env';
+dotEnv.config();
 
 const token = '$$app_token=' + process.env.OPENDATA;
 

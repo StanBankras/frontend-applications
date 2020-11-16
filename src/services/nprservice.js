@@ -1,7 +1,7 @@
 // import { getData } from '../utils/helpers';
-import * as npropendata from '../assets/data/extras.json';
+// import * as npropendata from '../assets/data/extras.json';
 
-const npropendataArray = npropendata;
+const npropendataArray = npropendata.default;
 
 export async function getNpropendata(areaId) {
   try {
