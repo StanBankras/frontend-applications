@@ -1,4 +1,4 @@
-<Map/>
+<Map bind:environmentalZones bind:parkingData/>
 
 <script>
   // Svelte
@@ -43,3 +43,9 @@
       }));
   });
 </script>
+
+<style lang="scss">
+  :global(body) {
+    min-height: 100vh;
+  }
+</style>
