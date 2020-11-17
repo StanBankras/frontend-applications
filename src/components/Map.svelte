@@ -6,7 +6,7 @@
   </g>
   <g class="municipalities">
     { #each filteredMunicipalities.features as municipality }
-    <path d={pathGenerator(municipality)}/>
+    <path on:click={ selectMunicipality(municipality) } d={pathGenerator(municipality)}/>
     { /each }
   </g>
   <g class="environment-zones">
@@ -15,13 +15,13 @@
     { /each }
   </g>
   <g class="municipality-parkings">
+    { #each selectedZoneParkings as parking }
     <circle
-      v-for="parking in selectedZoneParkings"
-      :key="parking.id"
       r="3"
-      :cx="parking.x"
-      :cy="parking.y"
+      cx={parking.x}
+      cy={parking.y}
       class="active"/>   
+    { /each }
   </g> 
 </svg>
 
@@ -29,6 +29,7 @@
   import { onMount } from 'svelte';
   import { geoMercator, geoPath, zoom, selectAll, select, zoomIdentity } from 'd3';
   import { getData } from '../utils/helpers';
+  import { getCenterCoordFromPolygon, isCoordInMunicipality } from '../services/zoneservice';
 
   let provinceData = { features: [] };
   let municipalityData = { features: [] };
@@ -39,7 +40,8 @@
       features: municipalityData.features
         .filter(x => eZoneNames.includes(x.properties.name.toLowerCase().replace('-', ' ')))
     }
-  $: parkingsPerMunicipality = () => {
+  let parkingsPerMunicipality
+  $: if(parkingData.length > 0) {
     const map = {};
     parkingData.slice().forEach(parking => {
       const result = isCoordInMunicipality(parking.centerCoord, filteredMunicipalities);
@@ -48,25 +50,40 @@
       if(!map[result]) map[result] = [];
       return map[result].push(parking);
     });
-    return map;
-  }
-  $: selectedZone = undefined;
-  $: selectedZoneParkings = () => {
-    if(!selectedZone) return [];
-    selectedZone.map(parking => {
-      return {
-        ezone: parking.environmentalZone,
-        id: parking.areaId,
-        x: this.projection(parking.centerCoord)[0],
-        y: this.projection(parking.centerCoord)[1]
-      }
-    });
+    parkingsPerMunicipality = map;
   }
 
+  let centerPoint = [4.69, 52.1];
+  $: if(selectedZone) {
+    centerPoint = getCenterCoordFromPolygon(selectedZone.geometry.coordinates[0][0]);
+  } else {
+    centerPoint = [4.69, 52.1];
+  }
+
+  let selectedZone = undefined;
+
+  $: selectedZoneParkings = parkingsPerMunicipality && selectedZone ? parkingsPerMunicipality[selectedZone.properties.name]
+      .filter(p => p.centerCoord.length > 1 && !isNaN(p.centerCoord[0]) && !isNaN(p.centerCoord[1]))
+      .map(parking => {
+        return {
+          ezone: parking.environmentalZone,
+          id: parking.areaId,
+          x: projection(parking.centerCoord)[0],
+          y: projection(parking.centerCoord)[1]
+        }
+      }) : [];
+
   $: projection = geoMercator()
-      .center([4.69, 52.1])
-      .scale(19000);
+      .center(centerPoint)
+      .scale(selectedZone ? 50000 : 19000);
   $: pathGenerator = geoPath().projection(projection);
+
+  function selectMunicipality(municipality) {
+    if(selectedZone && selectedZone.properties.name === municipality.properties.name) {
+      return selectedZone = undefined;
+    }
+    selectedZone = municipality;
+  }
 
   function toGeoJson(zone) {
     const geojson = {
@@ -90,6 +107,9 @@
 </script>
 
 <style lang="scss">
+  * {
+    transition: .5s ease-in-out;
+  }
   .provinces {
     fill: #ddb89b;
     stroke-width: 5px;
