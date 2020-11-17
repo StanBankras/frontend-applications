@@ -1,9 +1,3 @@
-import fetch from 'node-fetch';
-import dotEnv from 'dot-env';
-dotEnv.config();
-
-const token = '$$app_token=' + process.env.OPENDATA;
-
 // Replace all occurences of the <replace> parameters in the <string> by the <replaceBy> parameter
 export function replaceOccurences(string, replace, replaceBy) {
   return string.split(replace).join(replaceBy);
@@ -21,9 +15,9 @@ export async function getData(uriString) {
   let uri = uriString;
   if(uri.includes('opendata')) {
     if(uri.endsWith('json')) {
-      uri = uri + '?' + token + '&$limit=20000';
+      uri = uri + '?' + '&$limit=20000';
     } else if(uri.includes('$')) {
-      uri = uri + '&' + token + '&$limit=20000';
+      uri = uri + '&$limit=20000';
     }
   }
 

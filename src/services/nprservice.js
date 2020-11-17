@@ -1,48 +1,7 @@
-// import { getData } from '../utils/helpers';
-// import * as npropendata from '../assets/data/extras.json';
-
-const npropendataArray = npropendata.default;
-
-export async function getNpropendata(areaId) {
-  try {
-    if (npropendataArray.find(x => x.areaId === areaId)) return npropendataArray.find(x => x.areaId === areaId);
-    return {};
-    // console.log(areaId);
-    // const uuidReq = await getData('https://opendata.rdw.nl/resource/mz4f-59fw.json?areaid=' + areaId); // https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-PARKEERGEBIED/mz4f-59fw
-    // if (!uuidReq || !uuidReq[0] || !uuidReq[0].uuid) return null;
-
-    // const uuidData = await getData('http://cors-anywhere.herokuapp.com/https://npropendata.rdw.nl//parkingdata/v2/static/' + uuidReq[0].uuid);
-    // if (!uuidData) return null;
-
-    // return {
-    //   tariffs: formatTariffData((uuidData.parkingFacilityInformation.tariffs || [])),
-    //   specifications: (uuidData.parkingFacilityInformation.specifications || [])
-    // };
-  } catch (err) {
-    console.log(err);
-    return {
-      tariffs: [],
-      specifications: []
-    };
-  }
+export async function getNpropendata(areaId, data) {
+  if (data.find(x => x.areaId === areaId)) return data.find(x => x.areaId === areaId);
+  return {};
 } 
-
-// export async function getTariffs(areaId) {
-//   try {
-//     if (Object.prototype.hasOwnProperty.call(tariffsObject, areaId)) return tariffsObject[areaId];
-//     console.log(areaId);
-//     const uuidReq = await getData('https://opendata.rdw.nl/resource/mz4f-59fw.json?areaid=' + areaId); // https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-PARKEERGEBIED/mz4f-59fw
-//     if (!uuidReq || !uuidReq[0] || !uuidReq[0].uuid) return null;
-
-//     const uuidData = await getData('http://cors-anywhere.herokuapp.com/https://npropendata.rdw.nl//parkingdata/v2/static/' + uuidReq[0].uuid);
-//     if (!uuidData) return null;
-
-//     return formatTariffData((uuidData.parkingFacilityInformation.tariffs || []));
-//   } catch (err) {
-//     console.log(err);
-//     return null;
-//   }
-// }
 
 function formatTariffData(tariffs) {
   const tariffObj = {};

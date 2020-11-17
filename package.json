@@ -6,6 +6,7 @@
     "build": "svite build"
   },
   "dependencies": {
+    "d3": "^6.2.0",
     "point-in-polygon": "^1.0.1"
   },
   "devDependencies": {

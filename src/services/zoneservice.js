@@ -1,24 +1,5 @@
-// Esri installation for node: https://esri.github.io/arcgis-rest-js/guides/node/
-import 'cross-fetch/polyfill';
-import 'isomorphic-form-data';
 import inside from 'point-in-polygon';
-import { request } from '@esri/arcgis-rest-request';
-import * as environmentalZones from '../assets/data/milieuzones.json';
 import { replaceMultipleOccurences } from '../utils/helpers';
-
-const zones = environmentalZones.default;
-
-// Found out how to get geojson via: https://gis.stackexchange.com/questions/206313/accessing-geojson-from-arcgis-online-rest-api
-const uri = 'https://services.arcgis.com/kE0BiyvJHb5SwQv7/arcgis/rest/services/Milieuzones_NL/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true';
-
-export async function fetchEnvironmentalZones() {
-  try {
-    return await request(uri); 
-  } catch(err) { 
-    console.log(err);
-    return zones; 
-  }
-}
 
 export function getCenterCoord(coordinates) {
   if(!coordinates) return [];
@@ -48,25 +29,11 @@ export function getCenterCoordFromPolygon(polygon) {
   return [ longTotal / (polygon.length), latTotal / (polygon.length) ];
 }
 
-function getEnvironmentalZones(zones) {
-  const polygons = [];
-  zones.forEach(zone => {
-    if(zone.geometry.type === 'MultiPolygon') {
-      zone.geometry.coordinates.forEach(coordinateArray => {
-        polygons.push({ municipality: zone.properties.Gemeente, polygon: coordinateArray });
-      });      
-    } else {
-      polygons.push({ municipality: zone.properties.Gemeente, polygon: zone.geometry.coordinates })
-    }
-  });
-  return polygons;
-}
-
 export function isCoordInEnvironmentalZone(centerCoord, geojson) {
-  const polygons = getEnvironmentalZones(geojson.features);
+  const polygons = geojson;
   let zone = undefined;
   for(let i = 0;i < polygons.length;i++) {
-    if(inside(centerCoord, polygons[i].polygon[0])) {
+    if(inside(centerCoord, polygons[i].polygons[0])) {
       zone = polygons[i].municipality; 
       break;
     }
