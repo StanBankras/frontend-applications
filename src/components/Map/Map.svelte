@@ -20,16 +20,29 @@
       r="3"
       cx={parking.x}
       cy={parking.y}
-      class="active"/>   
+      class="active"
+      class:ezone={parking.ezone}/>   
     { /each }
   </g> 
 </svg>
+{ #if selectedZone }
+<div class="labels">
+  <p>
+    <span class="circle red"></span>
+    Parking outside environmental zone
+  </p>
+  <p>
+    <span class="circle green"></span>
+    Parking inside environmental zone
+  </p>
+</div>  
+{ /if }
 
 <script>
   import { onMount } from 'svelte';
   import { geoMercator, geoPath, zoom, selectAll, select, zoomIdentity } from 'd3';
-  import { getData } from '../utils/helpers';
-  import { getCenterCoordFromPolygon, isCoordInMunicipality } from '../services/zoneservice';
+  import { getData } from '/src/utils/helpers';
+  import { getCenterCoordFromPolygon, isCoordInMunicipality } from '/src/services/zoneservice';
 
   let provinceData = { features: [] };
   let municipalityData = { features: [] };
@@ -116,12 +129,24 @@
     stroke: #fffaec;
     cursor: grabbing;
   }
-  svg {
-    height: 90vh;
-  }
   .environment-zones {
+    fill: rgb(16, 202, 16);
+    transition: .3s ease-in-out;
     pointer-events: none;
-    fill: red;
+  }
+  .municipality-parkings {
+    transition: .3s ease-in-out;
+    pointer-events: none;
+    circle {
+      fill: rgba(0, 0, 0, 0.1);
+      &.active {
+        fill: red;
+      }
+      &.ezone {
+        fill: lightgreen;
+        z-index: 100;
+      }
+    }
   }
   .municipalities {
     path {
@@ -131,6 +156,37 @@
       &:hover {
         stroke-width: 3px;
         cursor: pointer;
+      }
+    }
+  }
+
+  .labels {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fffaec;
+    padding: 1rem;
+    p {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .circle {
+        display: block;
+        border-radius: 50%;
+        background-color: black;
+        width: 15px;
+        height: 15px;
+        margin-right: 0.5rem;
+        &.red {
+          background-color: red;
+        }
+        &.green {
+          background-color: lightgreen;
+        }
       }
     }
   }
