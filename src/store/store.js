@@ -1,3 +1,3 @@
-import { writable, readable } from 'svelte/store';
+import { writable } from 'svelte/store';
 
-export const parkingData = writable([]);
+export const selectedParkings = writable([]);

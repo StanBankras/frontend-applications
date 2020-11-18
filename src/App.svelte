@@ -19,7 +19,7 @@
         </select>
         <p>parkings</p>
       </div>
-      <table-comp v-if="selectedZone"/>
+      <Table/>
     </div>
   </div>
   <div class="map-wrapper">
@@ -54,6 +54,7 @@
 
   // Components
   import Map from './components/Map/Map.svelte';
+  import Table from './components/Table/Table.svelte';
 
   // Data
   let parkingData = [];
@@ -67,6 +68,7 @@
     parkingData = await Promise.all(dataset
       .map(x => {
         const obj = x;
+        obj.chargingPoints = x.chargingpointcapacity;
         obj.centerCoord = getCenterCoord(x.areageometryastext);
         obj.environmentalZone = isCoordInEnvironmentalZone(obj.centerCoord, environmentalZones);
         return obj;

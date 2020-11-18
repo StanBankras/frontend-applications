@@ -44,6 +44,8 @@
   import { getData } from '/src/utils/helpers';
   import { getCenterCoordFromPolygon, isCoordInMunicipality } from '/src/services/zoneservice';
 
+  import { selectedParkings } from '/src/store/store';
+
   let provinceData = { features: [] };
   let municipalityData = { features: [] };
   export let environmentalZones = [];
@@ -85,6 +87,12 @@
           y: projection(parking.centerCoord)[1]
         }
       }) : [];
+
+  $: if(selectedZoneParkings && parkingsPerMunicipality && selectedZone) {
+    $selectedParkings = parkingsPerMunicipality[selectedZone.properties.name];
+  } else {
+    $selectedParkings = [];
+  }
 
   $: projection = geoMercator()
       .center(centerPoint)
