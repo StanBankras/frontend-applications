@@ -7,23 +7,29 @@
 <Labels/>
 
 <script>
+  // Modules
   import { onMount } from 'svelte';
   import { geoMercator, geoPath } from 'd3';
+
+  // Helpers
   import { getData } from '/src/utils/helpers';
   import { getCenterCoordFromPolygon } from '/src/services/zoneservice';
 
+  // Store
   import { selectedMunicipality } from '/src/store/store';
 
-  import Labels from './Labels.svelte';
-  import EnvironmentZones from './EnvironmentZones.svelte';
-  import SelectedParkings from './SelectedParkings.svelte';
-  import Municipalities from './Municipalities.svelte';
-  import Provinces from './Provinces.svelte';
+  // Components
+  import Labels from './assets/Labels.svelte';
+  import EnvironmentZones from './assets/EnvironmentZones.svelte';
+  import SelectedParkings from './assets/SelectedParkings.svelte';
+  import Municipalities from './assets/Municipalities.svelte';
+  import Provinces from './assets/Provinces.svelte';
 
+  // Data
   let provinceData = { features: [] };
   let municipalityData = { features: [] };
-
   let centerPoint = [4.69, 52.1];
+
   $: if($selectedMunicipality && $selectedMunicipality.geometry) {
     centerPoint = getCenterCoordFromPolygon($selectedMunicipality.geometry.coordinates[0][0]);
   } else {
@@ -35,6 +41,7 @@
       .scale($selectedMunicipality ? 50000 : 19000);
   $: pathGenerator = geoPath().projection(projection);
 
+  // Load async data
   onMount(async () => {
     provinceData = await getData('data/provinces.json');
     municipalityData = await getData('data/townships.json');

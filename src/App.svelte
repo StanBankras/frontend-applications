@@ -49,7 +49,7 @@
   import { getNpropendata } from './services/nprservice';
 
   // Components
-  import Map from './components/Map/Map.svelte';
+  import Map from './components/Map/Index.svelte';
   import Table from './components/Table/Table.svelte';
 
   // Data

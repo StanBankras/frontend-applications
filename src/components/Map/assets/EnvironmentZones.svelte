@@ -9,7 +9,7 @@
 </g>
 
 <script>
-  import { eZones, selectedMunicipality } from '../../store/store.js';
+  import { eZones, selectedMunicipality } from '/src/store/store.js';
   export let pathGenerator = undefined;
 
   function toGeoJson(zone) {
