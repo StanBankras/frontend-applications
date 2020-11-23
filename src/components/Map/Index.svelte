@@ -38,7 +38,7 @@
 
   $: projection = geoMercator()
       .center(centerPoint)
-      .scale($selectedMunicipality ? 50000 : 19000);
+      .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 19000);
   $: pathGenerator = geoPath().projection(projection);
 
   // Load async data

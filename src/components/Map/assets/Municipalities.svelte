@@ -5,6 +5,7 @@
 </g>
 
 <script>
+  import { onMount } from 'svelte';
   import { filteredMunicipalities, eZones, parkingsPerMunicipality, selectedParkings, selectedMunicipality } from '/src/store/store';
   export let pathGenerator = undefined;
   export let municipalityData = [];
@@ -15,22 +16,27 @@
         .filter(x => eZoneNames.includes(x.properties.name.toLowerCase().replace('-', ' ')))
     }
 
-  let selectedZone = undefined;
-
-  $: if(Object.keys($parkingsPerMunicipality).length > 0 && selectedZone) {
-    $selectedParkings = $parkingsPerMunicipality[selectedZone.properties.name];
-    $selectedMunicipality = selectedZone;
+  $: if(Object.keys($parkingsPerMunicipality).length > 0 && $selectedMunicipality && $selectedMunicipality.properties) {
+    $selectedParkings = $parkingsPerMunicipality[$selectedMunicipality.properties.name];
   } else {
     $selectedParkings = [];
-    $selectedMunicipality = undefined;
   }
 
-function selectMunicipality(municipality) {
-  if(selectedZone && selectedZone.properties.name === municipality.properties.name) {
-    return selectedZone = undefined;
+  function selectMunicipality(municipality) {
+    if($selectedMunicipality && $selectedMunicipality.properties && $selectedMunicipality.properties.name === municipality.properties.name) {
+      $selectedMunicipality = undefined;
+      window.localStorage.removeItem('selectedMunicipality');
+    } else {
+      $selectedMunicipality = municipality;
+      window.localStorage.setItem('selectedMunicipality', JSON.stringify(municipality));
+    }
   }
-  selectedZone = municipality;
-}
+
+  onMount(() => {
+    const selected = window.localStorage.getItem('selectedMunicipality');
+    if(!selected) return;
+    $selectedMunicipality = JSON.parse(selected);
+  })
 </script>
 
 <style lang="scss">

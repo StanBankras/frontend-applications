@@ -3,7 +3,7 @@
   <path
     d={pathGenerator(toGeoJson(zone))}
     class:active={
-      $selectedMunicipality ? zone.municipality.toLowerCase().replace('-', ' ') === $selectedMunicipality.properties.name.toLowerCase().replace('-', ' ') : false 
+      $selectedMunicipality && $selectedMunicipality.properties ? zone.municipality.toLowerCase().replace('-', ' ') === $selectedMunicipality.properties.name.toLowerCase().replace('-', ' ') : false 
     }/>
   { /each }
 </g>
