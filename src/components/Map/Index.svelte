@@ -9,7 +9,7 @@
 <script>
   // Modules
   import { onMount } from 'svelte';
-  import { geoMercator, geoPath } from 'd3';
+  import { geoMercator, geoPath, zoom, select, selectAll, zoomIdentity } from 'd3';
 
   // Helpers
   import { getData } from '/src/utils/helpers';
@@ -30,11 +30,23 @@
   let municipalityData = { features: [] };
   let centerPoint = [4.69, 52.1];
 
+  function zoomed(e) {
+    selectAll('svg g').attr("transform", e.transform);
+  }
+
+  function resetZoom() {
+    selectAll('svg g').call(zooming.transform, zoomIdentity);
+  }
+
   $: if($selectedMunicipality && $selectedMunicipality.geometry) {
     centerPoint = getCenterCoordFromPolygon($selectedMunicipality.geometry.coordinates[0][0]);
   } else {
     centerPoint = [4.69, 52.1];
   }
+
+  $: zooming = zoom().on('zoom', (e) => zoomed(e));
+
+  $: if($selectedMunicipality || !$selectedMunicipality) resetZoom();
 
   $: projection = geoMercator()
       .center(centerPoint)
@@ -45,11 +57,12 @@
   onMount(async () => {
     provinceData = await getData('data/provinces.json');
     municipalityData = await getData('data/townships.json');
+    select('svg g').call(zooming);
   });
 </script>
 
 <style lang="scss">
   :global(*) {
-    transition: .5s ease-in-out;
+    transition: .2s ease-in-out;
   }
 </style>
