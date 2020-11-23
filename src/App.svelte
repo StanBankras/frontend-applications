@@ -11,22 +11,17 @@
     <div id="sankey">
       sankey will come here
     </div>
-    <div id="table">
-      <div class="select">
-        <p>Statistics for</p>
-        <select v-model="zone" name="environmentZone" id="environmentZone">
-          <option value="undefined">All</option>
-        </select>
-        <p>parkings</p>
-      </div>
+    { #if $selectedParkings.length > 0 }
+    <div transition:fade>
       <Table/>
     </div>
+    { /if }
   </div>
   <div class="map-wrapper">
     <div id="map">
-      { #if parkingData }
+      { #if $parkingData }
       <div class="map">
-        <Map bind:environmentalZones bind:parkingData/>
+        <Map bind:environmentalZones/>
       </div>
       { :else }
       <div class="loader-container" v-else>
@@ -44,6 +39,7 @@
 <script>
   // Svelte
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
 
   // Utils
   import { getData } from './utils/helpers';
@@ -57,15 +53,17 @@
   import Table from './components/Table/Table.svelte';
 
   // Data
-  let parkingData = [];
   let environmentalZones = [];
+  import { selectedParkings, eZones, parkingData } from '/src/store/store';
 
   onMount(async () => {
     environmentalZones = await getData('/data/milieuzones.json');
+    $eZones = environmentalZones;
+
     const dataset = await newDataset(settings.endpoints, settings.sharedKey);
     const tariffData = await getData('data/extras.json');
     
-    parkingData = await Promise.all(dataset
+    $parkingData = await Promise.all(dataset
       .map(x => {
         const obj = x;
         obj.chargingPoints = x.chargingpointcapacity;
@@ -125,23 +123,6 @@ p {
       border: 1px solid red;
       padding: 1rem;
       margin-bottom: 2rem;
-    }
-    #table {
-      .select {
-        display: flex;
-        align-items: center;
-        margin-bottom: 2rem;
-        p {
-          font-weight: bold;
-          font-size: 20px;
-        }
-        select {
-          width: 150px;
-          padding: 0 10px !important;
-          margin: 0 1.3rem;
-          height: 40px;
-        }
-      }
     }
   }
   .map-wrapper {
