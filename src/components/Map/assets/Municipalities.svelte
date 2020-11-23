@@ -6,11 +6,13 @@
 
 <script>
   import { onMount } from 'svelte';
+  import { pointer } from 'd3';
   import { filteredMunicipalities, eZones, parkingsPerMunicipality, selectedParkings, selectedMunicipality } from '/src/store/store';
   export let pathGenerator = undefined;
   export let municipalityData = [];
   
   $: eZoneNames = [...new Set(($eZones || []).map(x => x.municipality.toLowerCase().replace('-', ' ')))];
+
   $: $filteredMunicipalities = {
       features: municipalityData.features
         .filter(x => eZoneNames.includes(x.properties.name.toLowerCase().replace('-', ' ')))

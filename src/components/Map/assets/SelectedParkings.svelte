@@ -15,7 +15,7 @@
 
   export let projection = undefined;
 
-  $: parkingsMapped = $parkingsPerMunicipality && $selectedParkings.length > 0 ? $parkingsPerMunicipality[$selectedMunicipality.properties.name]
+  $: parkingsMapped = $parkingsPerMunicipality && $selectedParkings && $selectedParkings.length > 0 ? $parkingsPerMunicipality[$selectedMunicipality.properties.name]
   .filter(p => p.centerCoord.length > 1 && !isNaN(p.centerCoord[0]) && !isNaN(p.centerCoord[1]))
   .map(parking => {
     return {

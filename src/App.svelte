@@ -11,7 +11,7 @@
     <div id="sankey">
       sankey will come here
     </div>
-    { #if $selectedParkings.length > 0 }
+    { #if $selectedParkings.length > 0 || $parkingData.length > 0 }
     <div transition:fade>
       <Table/>
     </div>

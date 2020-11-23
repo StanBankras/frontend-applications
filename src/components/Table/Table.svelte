@@ -24,11 +24,25 @@
 <script>
   import { hasItems } from '/src/utils/helpers.js';
 
-  import { selectedParkings } from '/src/store/store';
+  import { selectedParkings, parkingsPerMunicipality } from '/src/store/store';
+
+  let allParkings;
+  $: if($parkingsPerMunicipality) {
+    const parkings = [];
+    Object.values($parkingsPerMunicipality).forEach(arr => {
+      arr.forEach(parking => {
+        if(!parking) return;
+        parkings.push(parking);
+      })
+    });
+    allParkings = parkings;
+  }
   
+  $: selected = $selectedParkings.length > 0 ? $selectedParkings : allParkings;
+
   $: selectedParkingsMapped = {
-    ezone: $selectedParkings.filter(p => p.environmentalZone), // environmental zone
-    nzone: $selectedParkings.filter(p => !p.environmentalZone) // normal zone
+    ezone: selected.filter(p => p.environmentalZone), // environmental zone
+    nzone: selected.filter(p => !p.environmentalZone) // normal zone
   }
   $: chargingPointPercentage = {
     ezone: !hasItems(selectedParkingsMapped.ezone) ? 0 : getParkingsWithChargingPointsPercentage(selectedParkingsMapped.ezone),

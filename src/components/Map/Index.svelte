@@ -51,18 +51,19 @@
   $: projection = geoMercator()
       .center(centerPoint)
       .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 19000);
+
   $: pathGenerator = geoPath().projection(projection);
 
   // Load async data
   onMount(async () => {
     provinceData = await getData('data/provinces.json');
     municipalityData = await getData('data/townships.json');
-    select('svg g').call(zooming);
+    selectAll('svg g').call(zooming);
   });
 </script>
 
 <style lang="scss">
   :global(*) {
-    transition: .2s ease-in-out;
+    transition: .3s ease-in-out;
   }
 </style>
