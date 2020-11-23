@@ -21,7 +21,7 @@
     <div id="map">
       { #if $parkingData }
       <div class="map">
-        <Map bind:environmentalZones/>
+        <Map/>
       </div>
       { :else }
       <div class="loader-container" v-else>
@@ -53,12 +53,10 @@
   import Table from './components/Table/Table.svelte';
 
   // Data
-  let environmentalZones = [];
   import { selectedParkings, eZones, parkingData } from '/src/store/store';
 
   onMount(async () => {
-    environmentalZones = await getData('/data/milieuzones.json');
-    $eZones = environmentalZones;
+    $eZones = await getData('/data/milieuzones.json');
 
     const dataset = await newDataset(settings.endpoints, settings.sharedKey);
     const tariffData = await getData('data/extras.json');
@@ -68,7 +66,7 @@
         const obj = x;
         obj.chargingPoints = x.chargingpointcapacity;
         obj.centerCoord = getCenterCoord(x.areageometryastext);
-        obj.environmentalZone = isCoordInEnvironmentalZone(obj.centerCoord, environmentalZones);
+        obj.environmentalZone = isCoordInEnvironmentalZone(obj.centerCoord, $eZones);
         return obj;
       })
       .map(async (x) => {

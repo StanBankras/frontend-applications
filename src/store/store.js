@@ -1,9 +1,9 @@
-import { writable, readable } from 'svelte/store';
+import { writable } from 'svelte/store';
 import { isCoordInMunicipality } from '/src/services/zoneservice.js';
 
 export const selectedParkings = writable([]);
 export const parkingData = writable([]);
-export const selectedMunicipality = writable([]);
+export const selectedMunicipality = writable({});
 export const eZones = writable([]);
 export const filteredMunicipalities = writable([]);
 export const parkingsPerMunicipality = writable([]);

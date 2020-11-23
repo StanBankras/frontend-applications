@@ -1,4 +1,4 @@
-{ #if selectedZone }
+{ #if $selectedParkings.length > 0 }
 <div class="labels" transition:fade>
   <p>
     <span class="circle red"></span>
@@ -13,7 +13,7 @@
 
 <script>
   import { fade } from 'svelte/transition';
-  export let selectedZone = undefined;
+  import { selectedParkings } from '/src/store/store.js';
 </script>
 
 <style lang="scss">
