@@ -1,6 +1,9 @@
-<div>
-  <p>costPerHour</p>
-  <p>{ costPerHour.ezone.length + ' ' + costPerHour.nzone.length }</p>
+<div class="chart">
+  <h4>Parking cost per hour</h4>
+  <div>
+    <p>costPerHour</p>
+    <p>{ costPerHour.ezone.length + ' ' + costPerHour.nzone.length }</p>
+  </div>
 </div>
 
 <script>

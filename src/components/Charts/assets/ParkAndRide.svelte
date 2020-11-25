@@ -1,6 +1,9 @@
-<div>
-  <p>parkAndRides</p>
-  <p>{ parkAndRides.ezone + ' ' + parkAndRides.nzone }</p>
+<div class="chart">
+  <h4>Park and ride %</h4>
+  <div>
+    <p>parkAndRides</p>
+    <p>{ parkAndRides.ezone + ' ' + parkAndRides.nzone }</p>
+  </div>
 </div>
 
 <script>
@@ -22,7 +25,6 @@
   }
 
   function getParkAndRideTotals(parkings) {
-    console.log(parkings.length > 0);
     return parkings.length > 0 ? parkings.reduce((acc, curr) => acc + (hasUsage(curr) && isParkAndRide(curr) ? 1 : 0), 0) : [];
   }
 </script>

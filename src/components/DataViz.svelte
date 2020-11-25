@@ -2,7 +2,7 @@
   <div id="map">
     <Map/>
   </div>
-  <div>
+  <div style="margin-right: 2rem;">
     <SelectZone/>
     <Charts/>
   </div>
