@@ -1,3 +1,4 @@
+{ #if $parkingData && $parkingData.length > 0 }
 <div class="wrapper">
   <svg width="100%" height="100%">
     <Provinces bind:pathGenerator bind:provinceData/>
@@ -7,6 +8,11 @@
   </svg>
   <Labels/>
 </div>
+{ :else }
+<div class="loader">
+  <img src="/img/loader.svg" alt="loader">
+</div>
+{ /if }
 
 <script>
   // Modules
@@ -18,7 +24,7 @@
   import { getCenterCoordFromPolygon } from '/src/services/zoneservice';
 
   // Store
-  import { selectedMunicipality } from '/src/store/store';
+  import { selectedMunicipality, parkingData } from '/src/store/store';
 
   // Components
   import Labels from './assets/Labels.svelte';
@@ -72,5 +78,12 @@
     width: 100%;
     height: 100%;
     position: relative;
+  }
+  .loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>

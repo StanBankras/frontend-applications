@@ -10,8 +10,7 @@
 </g>
 
 <script>
-  import { selectedParkings, filteredMunicipalities, parkingsPerMunicipality, selectedMunicipality } from '/src/store/store.js';
-  import { isCoordInMunicipality } from '/src/services/zoneservice';
+  import { selectedParkings, parkingsPerMunicipality, selectedMunicipality } from '/src/store/store.js';
 
   export let projection = undefined;
 

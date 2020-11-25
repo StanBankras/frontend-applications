@@ -1,4 +1,4 @@
-{ #if $selectedParkings.length > 0 }
+{ #if $selectedParkings && $selectedParkings.length > 0 }
 <div class="labels" transition:fade>
   <p>
     <span class="circle red"></span>

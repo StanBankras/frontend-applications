@@ -43,6 +43,7 @@ export function isCoordInEnvironmentalZone(centerCoord, geojson) {
 
 function getMunicipalityZones(zones) {
   const polygons = [];
+  if(!zones) return [];
   zones.forEach(zone => {
     if(zone.geometry.type === 'MultiPolygon') {
       zone.geometry.coordinates.forEach(coordinateArray => {

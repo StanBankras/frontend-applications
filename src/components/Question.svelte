@@ -11,8 +11,9 @@
     align-items: center;
     justify-content: center;
     h1 {
-      max-width: 600px;
+      max-width: 700px;
       color: #707070;
+      font-size: 35px;
     }
     img {
       height: 300px;

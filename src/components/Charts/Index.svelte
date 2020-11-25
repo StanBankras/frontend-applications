@@ -1,5 +1,5 @@
 <div>
-  { #if $selectedParkings && $selectedParkings.length > 0 }
+  { #if $selectedParkings && $selectedParkings.length > 0 && $selectedMunicipality }
   <h3>Stats for all parkings in { $selectedMunicipality.properties.name }</h3>
   { :else }
   <h3>Stats for all parkings in municipalities with an environmental zone</h3>

@@ -21,7 +21,7 @@
   import DataInformation from './components/DataInformation.svelte';
 
   // Data
-  import { selectedParkings, eZones, parkingData } from '/src/store/store';
+  import { eZones, parkingData } from '/src/store/store';
 
   onMount(async () => {
     $eZones = await getData('/data/milieuzones.json');

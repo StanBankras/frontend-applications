@@ -6,7 +6,6 @@
 
 <script>
   import { onMount } from 'svelte';
-  import { pointer } from 'd3';
   import { filteredMunicipalities, eZones, parkingsPerMunicipality, selectedParkings, selectedMunicipality } from '/src/store/store';
   export let pathGenerator = undefined;
   export let municipalityData = [];
