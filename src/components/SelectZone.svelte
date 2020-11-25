@@ -3,6 +3,11 @@
   <p>Click on one or click on them on the map</p>
   { #if $eZones && $eZones.length > 0 }
   <div class="buttons">
+    <button
+      on:click={ deselect }
+      class:active={ !$selectedMunicipality }>
+      All
+    </button>
     { #each $eZones.sort((a, b) => a.municipality.localeCompare(b.municipality)) as zone }
     <button
       class:active={ $selectedMunicipality ? municipalityActive(zone.municipality) : false }
@@ -24,6 +29,10 @@
 
   function selectMunicipality(name) {
     $selectedMunicipality = $filteredMunicipalities.features.find(m => m.properties.name.toLowerCase().replace('-', ' ')=== name.toLowerCase().replace('-', ' '));
+  }
+
+  function deselect() {
+    $selectedMunicipality = undefined;
   }
 </script>
 

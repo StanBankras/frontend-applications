@@ -4,10 +4,17 @@
   { :else }
   <h3>Stats for all parkings in municipalities with an environmental zone</h3>
   { /if }
+  { #if $parkingData && $parkingData.length > 0 }
+  Charts
+  { :else }
+  <div class="loader">
+    <img src="/img/loader.svg" alt="loader">
+  </div>
+  { /if }
 </div>
 
 <script>
-  import { selectedParkings, selectedMunicipality } from '/src/store/store.js';
+  import { selectedParkings, selectedMunicipality, parkingData } from '/src/store/store.js';
 </script>
 
 <style lang="scss">
