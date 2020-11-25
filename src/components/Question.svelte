@@ -1,5 +1,5 @@
 <section id="question">
-  <img src="/src/assets/img/ezones.png" alt="environmentzones netherlands">
+  <img src="/img/ezones.png" alt="environmentzones netherlands">
   <h1>Is environmentally friendly transportation supported more in parking places that are situated in environmental zones?</h1>
 </section>
 

@@ -2,7 +2,7 @@
   <div id="map">
     { #await $parkingData }
     <div class="loader-container" v-else>
-      <img src="/src/assets/img/loader.svg" alt="loader">
+      <img src="/img/loader.svg" alt="loader">
     </div>
     { :then data }
     <div class="map">
