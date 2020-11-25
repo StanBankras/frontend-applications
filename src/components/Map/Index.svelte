@@ -58,7 +58,7 @@
   onMount(async () => {
     provinceData = await getData('data/provinces.json');
     municipalityData = await getData('data/townships.json');
-    selectAll('svg g').call(zooming);
+    // selectAll('svg g').call(zooming);
   });
 </script>
 

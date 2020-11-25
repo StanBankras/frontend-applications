@@ -1,17 +1,15 @@
 <section id="information">
-  <div class="wrapper">
-    <p>
-      In environmental zones, you would normally expect more awareness for environmentally friendly transportation:
-      the goal of these zones is to reduce polution. The Netherlands has 13 of these so-called environmental zones.
-      By combining data, we can see the difference between parkings inside environmental zones and the ones outside environmental zones.
-    </p>
-    <h2>What makes a parking area more environmentally friendly?</h2>
-    <ul>
-      <li>Charging points</li>
-      <li>Good accessibility to public transport (park & ride)</li>
-      <li>Higher cost to park (assumption: motivate public transport)</li>
-    </ul>
-  </div>
+  <p>
+    In environmental zones, you would normally expect more awareness for environmentally friendly transportation:
+    the goal of these zones is to reduce polution. The Netherlands has 13 of these so-called environmental zones.
+    By combining data, we can see the difference between parkings inside environmental zones and the ones outside environmental zones.
+  </p>
+  <h2>What makes a parking area more environmentally friendly?</h2>
+  <ul>
+    <li>Charging points</li>
+    <li>Good accessibility to public transport (park & ride)</li>
+    <li>Higher cost to park (assumption: motivate public transport)</li>
+  </ul>
 </section>
 
 <style lang="scss">
