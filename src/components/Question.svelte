@@ -1,10 +1,10 @@
-<section id="question">
+<section>
   <img src="/img/ezones.png" alt="environmentzones netherlands">
   <h1>Is environmentally friendly transportation supported more in parking places that are situated in environmental zones?</h1>
 </section>
 
 <style lang="scss">
-  #question {
+  section {
     background-color: #FBF3DA;
     height: 100vh;
     display: flex;

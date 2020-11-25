@@ -1,4 +1,4 @@
-<section id="information">
+<section>
   <p>
     In environmental zones, you would normally expect more awareness for environmentally friendly transportation:
     the goal of these zones is to reduce polution. The Netherlands has 13 of these so-called environmental zones.
@@ -13,7 +13,7 @@
 </section>
 
 <style lang="scss">
-  #information {
+  section {
     background-color: #FBF3DA;
     display: flex;
     align-items: center;

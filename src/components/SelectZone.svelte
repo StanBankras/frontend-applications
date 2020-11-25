@@ -1,0 +1,47 @@
+<div>
+  <h3>Municipalities with environmental zones</h3>
+  <p>Click on one or click on them on the map</p>
+  { #if $eZones && $eZones.length > 0 }
+  <div class="buttons">
+    { #each $eZones.sort((a, b) => a.municipality.localeCompare(b.municipality)) as zone }
+    <button>{ zone.municipality }</button>
+    { /each }
+  </div>
+  { /if }
+</div>
+
+<script>
+  import { eZones } from '/src/store/store.js';
+</script>
+
+<style lang="scss">
+  h3 {
+    margin-bottom: 0.5rem;
+    font-size: 25px;
+  }
+  p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    button {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #DDB89B;
+      outline: none;
+      border: 0px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      &:hover {
+        background-color: #bd977b;
+      }
+    }
+  }
+</style>

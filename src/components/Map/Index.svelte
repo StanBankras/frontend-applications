@@ -1,10 +1,12 @@
-<svg width="100%" height="100%">
-  <Provinces bind:pathGenerator bind:provinceData/>
-  <Municipalities bind:pathGenerator bind:municipalityData/>
-  <SelectedParkings bind:projection/>
-  <EnvironmentZones bind:pathGenerator/>
-</svg>
-<Labels/>
+<div class="wrapper">
+  <svg width="100%" height="100%">
+    <Provinces bind:pathGenerator bind:provinceData/>
+    <Municipalities bind:pathGenerator bind:municipalityData/>
+    <SelectedParkings bind:projection/>
+    <EnvironmentZones bind:pathGenerator/>
+  </svg>
+  <Labels/>
+</div>
 
 <script>
   // Modules
@@ -65,5 +67,10 @@
 <style lang="scss">
   :global(*) {
     transition: .3s ease-in-out;
+  }
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
 </style>
