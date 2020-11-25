@@ -49,7 +49,7 @@
   $: if($selectedMunicipality && $selectedMunicipality.geometry) {
     centerPoint = getCenterCoordFromPolygon($selectedMunicipality.geometry.coordinates[0][0]);
   } else {
-    centerPoint = [4.69, 52.1];
+    centerPoint = [4.69, 51.9];
   }
 
   $: zooming = zoom().on('zoom', (e) => zoomed(e));
@@ -58,7 +58,7 @@
 
   $: projection = geoMercator()
       .center(centerPoint)
-      .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 17000);
+      .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 16000);
 
   $: pathGenerator = geoPath().projection(projection);
 

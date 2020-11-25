@@ -4,14 +4,27 @@
   { #if $eZones && $eZones.length > 0 }
   <div class="buttons">
     { #each $eZones.sort((a, b) => a.municipality.localeCompare(b.municipality)) as zone }
-    <button>{ zone.municipality }</button>
+    <button
+      class:active={ $selectedMunicipality ? municipalityActive(zone.municipality) : false }
+      on:click={ selectMunicipality(zone.municipality) }>
+      { zone.municipality }
+    </button>
     { /each }
   </div>
   { /if }
 </div>
 
 <script>
-  import { eZones } from '/src/store/store.js';
+  import { eZones, filteredMunicipalities, selectedMunicipality } from '/src/store/store.js';
+
+  function municipalityActive(name) {
+    if(!$selectedMunicipality || !$selectedMunicipality.properties) return false;
+    return $selectedMunicipality.properties.name.toLowerCase().replace('-', ' ') === name.toLowerCase().replace('-', ' ');
+  }
+
+  function selectMunicipality(name) {
+    $selectedMunicipality = $filteredMunicipalities.features.find(m => m.properties.name.toLowerCase().replace('-', ' ')=== name.toLowerCase().replace('-', ' '));
+  }
 </script>
 
 <style lang="scss">
@@ -41,6 +54,9 @@
       cursor: pointer;
       &:hover {
         background-color: #bd977b;
+      }
+      &.active {
+        background-color: rgb(102, 79, 61);
       }
     }
   }
