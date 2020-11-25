@@ -50,7 +50,7 @@
 
   $: projection = geoMercator()
       .center(centerPoint)
-      .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 19000);
+      .scale($selectedMunicipality && $selectedMunicipality.geometry ? 50000 : 17000);
 
   $: pathGenerator = geoPath().projection(projection);
 
