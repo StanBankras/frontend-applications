@@ -9,13 +9,11 @@
     <ChargingPoints bind:selectedParkingsMapped/>
     <ParkAndRide bind:selectedParkingsMapped/>
     <CostPerHour
-      bind:selectedParkingsMapped
       bind:data={ costPerHour.ezone }
       title="Parking cost per hour (environmental zone)"
       color="#10ca10"
       name="parkings in environmental zones"/>
     <CostPerHour
-      bind:selectedParkingsMapped
       bind:data={ costPerHour.nzone }
       title="Parking cost per hour (non-environmental zone) in €"
       color="#ca1010"
