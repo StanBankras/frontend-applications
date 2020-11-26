@@ -4,9 +4,10 @@
     { #if bins[0].length > 0 }
     <svg id="chart" width="350" height="230">
       <XAxis {...XProps}/>
+      <YAxis {...YProps}/>
       { #each bins as d }
       <rect
-        x={ x(d.x0) + 1 }
+        x={ xPadding + x(d.x0) + 1 }
         y={ y(d.length) }
         width={ Math.max(20, x(d.x1) - x(d.x0) - 5) }
         height={ y(0) - y(d.length) }
@@ -22,7 +23,9 @@
 
 <script>
   import { scaleLinear, bin, max } from 'd3';
+
   import XAxis from './XAxis.svelte';
+  import YAxis from './YAxis.svelte';
 
   export let data = [];
   export let title = '';
@@ -31,6 +34,8 @@
 
   let height = 200;
   let width = 300;
+  let yPadding = 40;
+  let xPadding = 40;
   let thresholds = [];
 
   $: if(data) {
@@ -44,7 +49,8 @@
 
   $: bins = bin().thresholds(thresholds)(data.filter(x => x < 10 && x >= 0));
 
-  $: XProps = { height, width, xPadding: 0, mappedData: bins.map(bin => { return { x: x(bin.x0), width: Math.max(20, x(bin.x1) - x(bin.x0) - 5), xLabel: bin.x0 } }) };
+  $: XProps = { height, width, xPadding, mappedData: bins.map(bin => { return { x: x(bin.x0), width: Math.max(20, x(bin.x1) - x(bin.x0) - 5), xLabel: bin.x0 } }) };
+  $: YProps = { height, yTicks, y, yPadding };
 
   $: x = scaleLinear()
     .domain([bins[0].x0, bins[bins.length - 1].x1])
@@ -52,5 +58,7 @@
   
   $: y = scaleLinear()
     .domain([0, max(bins, d => d.length)]).nice()
-    .range([height - 30, 30]);
+    .range([height, 0]);
+
+  $: yTicks = y.ticks(6);
 </script>
