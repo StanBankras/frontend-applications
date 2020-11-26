@@ -8,7 +8,8 @@
   <div class="charts">
     <ChargingPoints bind:selectedParkingsMapped/>
     <ParkAndRide bind:selectedParkingsMapped/>
-    <CostPerHour bind:selectedParkingsMapped/>
+    <CostPerHour bind:selectedParkingsMapped bind:data={ costPerHour.ezone } title="Parking cost per hour (environmental zone)" color="#10ca10" name="parkings in environmental zones"/>
+    <CostPerHour bind:selectedParkingsMapped bind:data={ costPerHour.nzone } title="Parking cost per hour (non-environmental zone)" color="#ca1010" name="parkings in non-environmental zones"/>
   </div>
   { :else }
   <div class="loader">
@@ -19,6 +20,7 @@
 
 <script>
   import { selectedParkings, selectedMunicipality, parkingData, parkingsPerMunicipality } from '/src/store/store.js';
+  import { hasItems } from '/src/utils/helpers.js';
 
   import ChargingPoints from './assets/ChargingPoints.svelte';
   import ParkAndRide from './assets/ParkAndRide.svelte';
@@ -37,6 +39,15 @@
   }
 
   $: selected = $selectedParkings.length > 0 ? $selectedParkings : allParkings;
+
+  $: costPerHour = {
+    ezone: !selectedParkingsMapped || !hasItems(selectedParkingsMapped.ezone) ? [] : mapCostPerHour(selectedParkingsMapped.ezone),
+    nzone: !selectedParkingsMapped || !hasItems(selectedParkingsMapped.nzone) ? [] : mapCostPerHour(selectedParkingsMapped.nzone),
+  }
+
+  function mapCostPerHour(parkings) {
+    return parkings.map(parking => parking.overallAverageTariff ? Math.ceil(parking.overallAverageTariff * 60) : 0);
+  }
 
   $: selectedParkingsMapped = {
     ezone: selected.filter(p => p.environmentalZone), // environmental zone
