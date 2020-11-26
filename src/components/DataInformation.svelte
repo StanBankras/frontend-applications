@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
   <h2>What data is used?</h2>
   <ul>
     <li>
