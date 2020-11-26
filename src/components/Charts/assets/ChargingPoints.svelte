@@ -1,14 +1,16 @@
 <div class="chart">
   <h4>Charging points</h4>
   <div>
-    <svg id="chart" width="300" height="300">
+    <svg id="chart" width="350" height="230">
+      <XAxis {...XProps}/>
+      <YAxis {...YProps}/>
       <g class="bars">
         { #each mappedData as bar }
         <rect
           fill={ bar.fill }
           height={ bar.height }
           width={ bar.width }
-          x={ bar.x }
+          x={ xPadding + bar.x }
           y={ bar.y }
         ></rect>
         { /each }
@@ -21,16 +23,27 @@
   import { scaleBand, scaleLinear } from 'd3'; 
   import { hasItems } from '/src/utils/helpers.js';
 
+  import { selectedParkings } from '/src/store/store.js';
+
+  import XAxis from './XAxis.svelte';
+  import YAxis from './YAxis.svelte';
+
   export let selectedParkingsMapped = {};
 
-  let height = 300;
+  let height = 200;
   let width = 300;
+  let yPadding = 30;
+  let xPadding = 40;
+  let data = [];
 
-  $: data = [
-    ['1 park with charging point', chargingPoints.ezone.length, '#10ca10'],
-    ['2 no charging point', selectedParkingsMapped.ezone.length - chargingPoints.ezone.length, '#10ca10'],
-    ['3 park with charging point', chargingPoints.nzone.length, '#ca1010'],
-    ['4 no charging point', selectedParkingsMapped.nzone.length - chargingPoints.nzone.length, '#ca1010']
+  $: XProps = { height, width, mappedData, xPadding };
+  $: YProps = { height, yTicks, y, yPadding };
+
+  $: if($selectedParkings) data = [
+    ['> 0', (chargingPoints.ezone || []).length, '#10ca10'],
+    ['0', (selectedParkingsMapped.ezone || []).length - (chargingPoints.ezone || []).length, '#10ca10'],
+    ['`> 0', (chargingPoints.nzone || []).length, '#ca1010'],
+    ['`0', (selectedParkingsMapped.nzone || []).length - (chargingPoints.nzone || []).length, '#ca1010']
   ];
 
   $: x = scaleBand()
@@ -41,6 +54,8 @@
   $: y = scaleLinear()
     .range([height, 0])
     .domain([0, Math.max(...data.map(d => d[1]))]);
+
+  $: yTicks = y.ticks(6);
 
   $: mappedData = data.map(d => {
     return {
