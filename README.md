@@ -40,6 +40,10 @@ If there's an invalid of undefined value in a data point, it will stay in the ar
 
 The only criteria my data has is that there has to be a geographical location attached, those that don't have this are not used in my visualisation or calculation at all.
 
+## Framework
+![Svelte logo](https://miro.medium.com/max/4154/1*gr3kgm0McAm1eeJJog7jfg.png)
+
+This project marks the first time I used Svelte. Coming from Vue, Svelte was pleasant to work with and showed a lot of similarities. Apart from the example based tutorial on [svelte.dev](https://svelte.dev/tutorial/basics), I didn't need a lot more to get started.
 
 ## Installation
 Here's how to start using this project.
