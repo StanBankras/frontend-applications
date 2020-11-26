@@ -4,6 +4,9 @@
     the goal of these zones is to reduce polution. The Netherlands has 13 of these so-called environmental zones.
     By combining data, we can see the difference between parkings inside environmental zones and the ones outside environmental zones.
   </p>
+  <p>
+    <i>Disclaimer: only parking spots available in Opendata by RDW which have their location registered is represented in this datavisualisation.</i>
+  </p>
   <h2>What makes a parking area more environmentally friendly?</h2>
   <ul>
     <li>Charging points</li>
