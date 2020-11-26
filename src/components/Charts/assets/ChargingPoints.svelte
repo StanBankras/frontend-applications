@@ -15,6 +15,8 @@
         ></rect>
         { /each }
       </g>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 + 10 }, ${ height + 45 })` }>Amount of charging points</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
     </svg>
   </div>
 </div>
@@ -30,10 +32,10 @@
 
   export let selectedParkingsMapped = {};
 
-  let height = 200;
-  let width = 300;
-  let yPadding = 30;
-  let xPadding = 40;
+  let height = 180;
+  let width = 270;
+  let yPadding = 60;
+  let xPadding = 60;
   let data = [];
 
   $: XProps = { height, width, mappedData, xPadding };

@@ -15,6 +15,7 @@
         ></rect>
         { /each }
       </g>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
     </svg>
   </div>
 </div>
@@ -29,10 +30,10 @@
   import XAxis from './XAxis.svelte';
   import YAxis from './YAxis.svelte';
 
-  let height = 200;
+  let height = 180;
   let width = 300;
-  let yPadding = 30;
-  let xPadding = 40;
+  let yPadding = 60;
+  let xPadding = 60;
   let data = [];
 
   $: XProps = { height, width, mappedData, xPadding };
