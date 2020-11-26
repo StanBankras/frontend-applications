@@ -2,15 +2,18 @@
   <h2>What data is used?</h2>
   <ul>
     <li>
-      <span>Opendata RDW: <a href="#">parking specifications</a>, <a href="#">parking geometry</a></span>
+      <span>
+        Opendata RDW: <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s">parking specifications</a>,
+        <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEOMETRIE-GEBIED/nsk3-v9n7">parking geometry</a>
+      </span>
       <span><i>Location of the parkings, charging points</i></span>
     </li>
     <li>
-      <span>NPR opendata: <a href="#">NPR opendata API</a></span>
+      <span>NPR opendata: <a href="https://nationaalparkeerregister.nl/home.html">NPR opendata API</a></span>
       <span><i>Cost per hour & is parking a Park & ride or not?</i></span>
     </li>
     <li>
-      <span>Environmental zones in The Netherlands: <a href="#">API</a></span>
+      <span>Environmental zones in The Netherlands: <a href="https://services.arcgis.com/kE0BiyvJHb5SwQv7/arcgis/rest/services/Milieuzones_NL/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true">API</a></span>
       <span><i>Get polygon data from the environmental zones in The Netherlands</i></span>
     </li>
   </ul>
