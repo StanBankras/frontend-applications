@@ -10,7 +10,7 @@
     <ParkAndRide bind:selectedParkingsMapped/>
     <CostPerHour
       bind:data={ costPerHour.ezone }
-      title="Parking cost per hour (environmental zone)"
+      title="Parking cost per hour (environmental zone) in €"
       color="#10ca10"
       name="parkings in environmental zones"/>
     <CostPerHour
