@@ -18,6 +18,7 @@
       <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 + 10 }, ${ height + 45 })` }>Amount of charging points</text>
       <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
     </svg>
+    
   </div>
 </div>
 

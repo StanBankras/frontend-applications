@@ -35,7 +35,7 @@
   export let color = '';
 
   let height = 180;
-  let width = 300;
+  let width = 270;
   let yPadding = 60;
   let xPadding = 60;
   let thresholds = [];
