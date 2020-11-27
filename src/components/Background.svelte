@@ -11,6 +11,9 @@
     <li>Vanaf 2025 kunnen gemeentes nog meer voertuigen weigeren: elk voertuig beneden emissieklasse 4 of 5</li>
   </ul>
   <p>
+    <a href="https://www.carnext.com/nl-be/euronorm/#typeeurnormen">Emissieklassen / euronorm uitleg</a>
+  </p>
+  <p>
     In totaal zijn er 6 emissieklasses. Dit betekent dat vanaf 2025 de gemeentes kunnen bepalen dat 66% van de emissieklasses niet meer in hun milieuzone mogen komen. 
     Deze ontwikkelingen gaan erg snel, dus wat betekent dit voor de toekomst van de milieuzones?
   </p>
