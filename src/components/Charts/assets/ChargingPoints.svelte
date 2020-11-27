@@ -1,5 +1,5 @@
 <div class="chart">
-  <h4>Charging points</h4>
+  <h4>Oplaadpunten</h4>
   <div>
     <svg id="chart" width="350" height="230">
       <XAxis {...XProps}/>
@@ -15,8 +15,8 @@
         ></rect>
         { /each }
       </g>
-      <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 + 10 }, ${ height + 45 })` }>Amount of charging points</text>
-      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 + 10 }, ${ height + 45 })` }>Aantal oplaadpunten</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 70 }) rotate(270)` }>Aantal parkeerplaatsen</text>
     </svg>
     
   </div>
@@ -88,5 +88,8 @@
   }
   :global(.chart h4) {
     margin-bottom: 0.5rem;
+  }
+  :global(text) {
+    font-family: Arial, Helvetica, sans-serif;
   }
 </style>

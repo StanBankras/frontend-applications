@@ -1,6 +1,6 @@
 <section>
   <img src="/img/ezones.png" alt="environmentzones netherlands">
-  <h1>Is environmentally friendly transportation supported more in parking places that are situated in environmental zones?</h1>
+  <h1>Wordt milieuvriendelijker transport beter ondersteunt in milieuzones dan in de rest van een gemeente?</h1>
 </section>
 
 <style lang="scss">
@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 2rem;
     h1 {
       max-width: 700px;
       color: #707070;
@@ -18,6 +19,9 @@
     img {
       height: 300px;
       margin-right: 2rem;
+      @media(max-width: 600px) {
+        display: none;
+      }
     }
   }
 </style>

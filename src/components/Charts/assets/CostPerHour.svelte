@@ -14,11 +14,11 @@
         fill={ color }>
       </rect>
       { /each }
-      <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 }, ${ height + 45 })` }>Price per hour in €</text>
-      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(${ width / 2 }, ${ height + 45 })` }>Parkeerprijs per uur in €</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 70 }) rotate(270)` }>Aantal parkeerplaatsen</text>
     </svg>
     { :else }
-    <p>No entries found for { name }</p>
+    <p>Geen parkeerplaatsen voor { name }</p>
     { /if }
   </div>
 </div>

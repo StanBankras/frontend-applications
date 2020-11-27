@@ -1,5 +1,5 @@
 <div class="chart">
-  <h4>Park and ride %</h4>
+  <h4>Park & ride %</h4>
   <div>
     <svg id="chart" width="350" height="230">
       <XAxis {...XProps}/>
@@ -15,7 +15,7 @@
         ></rect>
         { /each }
       </g>
-      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 40 }) rotate(270)` }>Parking count</text>
+      <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 70 }) rotate(270)` }>Aantal parkeerplaatsen</text>
     </svg>
   </div>
 </div>
@@ -40,8 +40,8 @@
   $: YProps = { height, yTicks, y, yPadding };
 
   $: if($selectedParkings) data = [
-    ['Environmental zone', parkAndRides.ezone / selectedParkingsMapped.ezone.length * 100, '#10ca10'],
-    ['Non-environmental zone', parkAndRides.nzone / selectedParkingsMapped.nzone.length * 100, '#ca1010']
+    ['Milieuzone', parkAndRides.ezone / selectedParkingsMapped.ezone.length * 100, '#10ca10'],
+    ['Niet-milieuzone', parkAndRides.nzone / selectedParkingsMapped.nzone.length * 100, '#ca1010']
   ];
 
   $: x = scaleBand()

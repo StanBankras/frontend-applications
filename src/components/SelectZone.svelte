@@ -1,12 +1,12 @@
 <div>
-  <h3>Municipalities with environmental zones</h3>
-  <p>Click on one or click on them on the map</p>
+  <h3>Gemeentes met milieuzones</h3>
+  <p>Klik op de naam van een gemeente of navigeer via de kaart</p>
   { #if $eZones && $eZones.length > 0 }
   <div class="buttons">
     <button
       on:click={ deselect }
       class:active={ !$selectedMunicipality }>
-      All
+      Alle
     </button>
     { #each $eZones.sort((a, b) => a.municipality.localeCompare(b.municipality)) as zone }
     <button

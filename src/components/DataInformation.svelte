@@ -1,23 +1,23 @@
 <footer id="footer">
-  <h2>What data is used?</h2>
+  <h2>Welke data wordt gebruikt?</h2>
   <ul>
     <li>
       <span>
-        Opendata RDW: <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s">parking specifications</a>,
-        <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEOMETRIE-GEBIED/nsk3-v9n7">parking geometry</a>
+        Opendata RDW: <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-SPECIFICATIES-PARKEERGEBIED/b3us-f26s">parkeergebied specificaties</a>,
+        <a href="https://opendata.rdw.nl/Parkeren/Open-Data-Parkeren-GEOMETRIE-GEBIED/nsk3-v9n7">parkeergebied geometrie</a>
       </span>
-      <span><i>Location of the parkings, charging points</i></span>
+      <span><i>Locatie parkeergebied, hoeveelheid oplaadpunten</i></span>
     </li>
     <li>
       <span>NPR opendata: <a href="https://nationaalparkeerregister.nl/home.html">NPR opendata API</a></span>
-      <span><i>Cost per hour & is parking a Park & ride or not?</i></span>
+      <span><i>Parkeerkosten per uur & is deze parkeerplaats een park & ride?</i></span>
     </li>
     <li>
-      <span>Environmental zones in The Netherlands: <a href="https://services.arcgis.com/kE0BiyvJHb5SwQv7/arcgis/rest/services/Milieuzones_NL/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true">API</a></span>
-      <span><i>Get polygon data from the environmental zones in The Netherlands</i></span>
+      <span>Milieuzones in Nederland: <a href="https://services.arcgis.com/kE0BiyvJHb5SwQv7/arcgis/rest/services/Milieuzones_NL/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true">API</a></span>
+      <span><i>Geojson data van milieuzones in Nederland</i></span>
     </li>
   </ul>
-  <p>By Stan Bankras</p>
+  <p>Door Stan Bankras</p>
 </footer>
 
 <style lang="scss">

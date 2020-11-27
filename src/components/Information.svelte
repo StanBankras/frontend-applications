@@ -1,17 +1,17 @@
 <section>
   <p>
-    In environmental zones, you would normally expect more awareness for environmentally friendly transportation:
-    the goal of these zones is to reduce polution. The Netherlands has 13 of these so-called environmental zones.
-    By combining data, we can see the difference between parkings inside environmental zones and the ones outside environmental zones.
+    In milieuzones zou je verwachten dat gemeentes beter hun best doen om groener transport te faciliteren:
+    het doel is nou eenmaal om de luchtkwaliteit te verbeteren. Nederland heeft in totaal 13 verschillende milieuzones:
+    door data te combineren, kunnen we inzichtelijk maken wat de verschillen zijn tussen milieuzones en de rest van een gemeente met betrekking tot parkeren.
   </p>
   <p>
-    <i>Disclaimer: only parking spots available in Opendata by RDW which have their location registered is represented in this datavisualisation.</i>
+    <i>Disclaimer: alleen parkeerplaatsen uit de Opendata van de RDW die een geolocatie met zich hebben zijn meegenomen in deze visualisatie.</i>
   </p>
-  <h2>What makes a parking area more environmentally friendly?</h2>
+  <h2>Wat maakt een parkeerplaats beter ondersteund voor milieuvriendelijk rijden?</h2>
   <ul>
-    <li>Charging points</li>
-    <li>Good accessibility to public transport (park & ride)</li>
-    <li>Higher cost to park (assumption: motivate public transport)</li>
+    <li>Oplaad punten voor de elektrische auto</li>
+    <li>Goede toegankelijkheid tot het openbaar vervoer (park & ride)</li>
+    <li>Hogere kosten om te parkeren (aanname: demotiveer rijden naar deze plek, motiveer openbaar vervoer)</li>
   </ul>
 </section>
 
@@ -23,6 +23,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100vh;
+    padding: 0 2rem;
     p {
       max-width: 50rem;
       margin-bottom: 4rem;

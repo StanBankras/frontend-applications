@@ -2,11 +2,11 @@
 <div class="labels" transition:fade>
   <p>
     <span class="circle red"></span>
-    Parking outside environmental zone
+    Parkeerplaatsen buiten milieuzones
   </p>
   <p>
     <span class="circle green"></span>
-    Parking inside environmental zone
+    Parkeerplaatsen binnen milieuzones
   </p>
 </div>  
 { /if }

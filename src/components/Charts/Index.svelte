@@ -1,8 +1,8 @@
 <div>
   { #if $selectedParkings && $selectedParkings.length > 0 && $selectedMunicipality }
-  <h3>Stats for all parkings ({ $selectedParkings.length }) in { $selectedMunicipality.properties.name }</h3>
+  <h3>Statistieken voor parkeerplaatsen ({ $selectedParkings.length }) in { $selectedMunicipality.properties.name }</h3>
   { :else }
-  <h3>Stats for all parkings ({ allParkings.length }) in municipalities with an environmental zone</h3>
+  <h3>Statistieken voor alle parkeerplaatsen ({ allParkings.length }) in gemeentes met een milieuzone</h3>
   { /if }
   { #if $parkingData && $parkingData.length > 0 }
   <div class="charts">
@@ -10,14 +10,14 @@
     <ParkAndRide bind:selectedParkingsMapped/>
     <CostPerHour
       bind:data={ costPerHour.ezone }
-      title="Parking cost per hour (environmental zone) in €"
+      title="Parkeerkosten per uur (milieuzone) in €"
       color="#10ca10"
-      name="parkings in environmental zones"/>
+      name="parkeerplaatsen in milieuzones"/>
     <CostPerHour
       bind:data={ costPerHour.nzone }
-      title="Parking cost per hour (non-environmental zone) in €"
+      title="Parkeerkosten per uur (niet-milieuzone) in €"
       color="#ca1010"
-      name="parkings in non-environmental zones"
+      name="parkeerplaatsen in niet-milieuzones"
     />
   </div>
   { :else }

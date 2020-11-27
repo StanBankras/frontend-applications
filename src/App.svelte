@@ -1,4 +1,5 @@
 <Question/>
+<Background/>
 <Information/>
 <DataViz/>
 <DataInformation/>
@@ -19,6 +20,7 @@
   import Information from './components/Information.svelte';
   import DataViz from './components/DataViz.svelte';
   import DataInformation from './components/DataInformation.svelte';
+  import Background from './components/Background.svelte';
 
   // Data
   import { eZones, parkingData } from '/src/store/store';
