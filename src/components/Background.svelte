@@ -15,7 +15,7 @@
     Deze ontwikkelingen gaan erg snel, dus wat betekent dit voor de toekomst van de milieuzones?
   </p>
   <p>
-    Het logische doel van de milieuzones is dat het automobilisten pusht om minder kilometers te rijden of om over te stappen om milieuvriendelijker transport, zoals de elektrische auto.
+    Het logische doel van de milieuzones is dat het automobilisten pusht om minder kilometers te rijden of om over te stappen op milieuvriendelijker transport, zoals de elektrische auto.
     Maar bieden gemeentes met een milieuzone ook betere faciliteiten voor dit gedrag in milieuzones?
   </p>
 </section>
