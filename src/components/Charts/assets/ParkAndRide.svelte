@@ -1,6 +1,7 @@
 <div class="chart">
   <h4>Park & ride %</h4>
   <div>
+    { #if selectedParkingsMapped.nzone.length !== 0 && selectedParkingsMapped.ezone.length !== 0 }
     <svg id="chart" width="350" height="230">
       <XAxis {...XProps}/>
       <YAxis {...YProps}/>
@@ -17,6 +18,9 @@
       </g>
       <text style="font-size: 12px; text-align: center" transform={ `translate(20, ${ height / 2 + 70 }) rotate(270)` }>Aantal parkeerplaatsen</text>
     </svg>
+    { :else }
+    <p>Geen park & rides gevonden</p>
+    { /if }
   </div>
 </div>
 
